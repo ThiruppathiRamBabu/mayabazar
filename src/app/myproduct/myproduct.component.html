@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<img src="../../assets/image (1).png" alt="bar clothes">
+<div class="card" *ngFor="let item of items">
+  <div class="row" *ngFor="let product of item.product">
+    <img [src]="product.clothurl" style="height: 250px; width: 250px; object-fit: contain; border: 10px solid white;" class="mx-5">
+    <div class="col">
+      <h1>{{product.model}}</h1>
+      <p>{{product.description}}</p>
+      <p>Price : {{product.price | currency: 'INR'}}</p>
+      <a class="btn btn-danger">Order Placed</a>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="row">
+  <div class="col-4" *ngFor="let item of items">
+    <div class="card shadow d-flex text-center mt-4" style="width: 20rem;" *ngFor="let product of item.product">
+      <img [src]="product.clothurl" width="200" height="200" style="object-fit: contain;" class="mx-5 mt-2">
+      <div class="card-body">
+        <h1>{{product.model}}</h1>
+        <p>Price : {{product.price | currency: 'INR'}}</p>
+        <button class="btn btn-danger">Order Placed</button>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<img src="../../assets/image (1).png" alt="bar clothes">
+<!-- <div class="card" style="cursor: pointer;">
+    <div class="row">
+        <div class="col" style="margin-left: 200px;">
+            <h1>Shirt</h1>
+            <img style="width: 250px; height: 250px;" class="border border-5 border-danger"
+                src="../../assets/images (1).jpeg"  (click)="goShirt()">
+        </div>
+        <div class="col">
+            <h1>Pant</h1>
+            <img style="width: 250px; height: 250px;" class="border border-5 border-danger"
+                src="../../assets/ivoc_olive_green_flat_front_slim_fit_cargo_pants.webp" routerLink="/pant">
+        </div>
+        <div class="col">
+            <h1>T-shirt</h1>
+            <img style="width: 250px; height: 250px;" class="border border-5 border-danger"
+                src="../../assets/11525240942451-HRX-by-Hrithik-Roshan-Men-Black-Self-Design-Polo-Collar-T-shirt-1561525240942331-1.webp"
+               routerLink="/tshirt">
+        </div>
+    </div>
+</div>
+<div class="card" style="cursor: pointer;">
+    <div class="row">
+        <div class="col" style="margin-left: 200px;">
+            <h1>Saree</h1>
+            <img style="width: 250px; height: 250px;" class="border border-5 border-danger"
+                src="../../assets/-473Wx593H-465033361-grey-MODEL.jpg" routerLink="/saree">
+        </div>
+        <div class="col">
+            <h1>Chudi</h1>
+            <img style="width: 250px; height: 250px;" class="border border-5 border-danger"
+                src="../../assets/7e1a911.jpeg" routerLink="/chudi">
+        </div>
+        <div class="col">
+            <h1>Tops</h1>
+            <img style="width: 250px; height: 250px;" class="border border-5 border-danger"
+                src="../../assets/22AUW31261-211536M_1.webp" routerLink="/tops">
+        </div>
+    </div>
+</div>
+ -->
+<div class="container">
+    <div class="row" style="cursor: pointer;">
+        <div class="col-4  d-flex justify-content-center align-items-center mt-5" *ngFor="let clothData of clothDatas">
+            <div class="card shadow" style="width: 17rem;">
+                <h4 class="card-header">{{clothData.type}}</h4>
+                <img class="image " [src]="clothData.url" (click)="goCloth(clothData.type)">
+            </div>
+        </div>
+    </div>
+</div>

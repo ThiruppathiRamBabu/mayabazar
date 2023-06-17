@@ -1,0 +1,88 @@
+// }
+// .red-text { 
+//     color: red; 
+// }
+//     .big-text { 
+//         font-size: 24px; 
+//     }
+// .back{
+//     background-image:url(../../assets/74846248.jpg) ;
+//     object-fit: cover;
+//     opacity: 0.5;
+// }
+
+// .circle {
+//   width: 80px;
+//   height: 80px;
+//   border-radius: 50%;
+//   display: inline-block;
+//   border: 1px solid black;
+//   background-color: white;
+// }
+
+// .red-light {
+//   background-color: red;
+// }
+
+// .yellow-light {
+//   background-color: yellow;
+// }
+
+// .green-light {
+//   background-color: green;
+// }
+
+// .bike {
+//   position: relative;
+//   animation-name: ride;
+//   animation-iteration-count: infinite;
+//   animation-duration: 5s;
+//   animation-delay: 5s;
+// }
+
+// @keyframes ride {
+//   0% {
+//     left: 0px;
+//     top: 0px;
+//   }
+
+//   25% {
+//     left: 50px;
+//     top: 0px;
+//   }
+
+//   50% {
+//     left: 1300px;
+//     top: 0px;
+//   }
+// }
+
+.btn {
+  position: fixed;
+  right: 10px;
+}
+
+.log {
+  position: fixed;
+  right: 100px;
+}
+
+i {
+  font-size: 500%;
+  text-shadow: 4px 4px 6px black;
+  color: red;
+}
+.dot{
+  border-radius: 90%;
+  display: inline-block;
+}
+.hi{
+  font-size: 300%;
+  color: white;
+}
+strong{
+  font-size: 200%;
+}
+span{
+  color: red;
+}

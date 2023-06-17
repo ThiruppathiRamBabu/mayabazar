@@ -1,0 +1,74 @@
+<app-navbar [searchText]="searchText" (searchClick)="onSearchClick($event)"></app-navbar>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="../../assets/1516103172.jpg" class="d-block w-100" alt="MayaBazar">
+        </div>
+        <div class="carousel-item">
+            <img src="../../assets/Frame 22 (1).jpg" class="d-block w-100" style="height: 516px;">
+        </div>
+        <div class="carousel-item">
+            <img src="../../assets/Home_1_9.webp " class="d-block w-100" style="height: 516px;">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<div class="card-group">
+    <div class="card">
+        <img src="../../assets/360_F_281342639_9ZqzRZmignzjT2ZLe2vqLR1Wr1eNz7My.jpg"
+            style="height: 200px; width: 700px;" alt="New Arraival">
+        <div class="row">
+            <div class="col">
+                <img class="mt-4" src="../../assets/fashion-poster-design-with-outfit-accessories-vector-31175544.jpg"
+                    alt="offer">
+                <div class="col">
+                    <a type="submit" class="btn btn-danger mt-3" style="margin-left: 180px;" routerLink="/newarraival">view</a>
+                </div>
+            </div>
+            <div class="col">
+                <img class="mt-4" src="../../assets/5a1352df0dc989be541b0d778ae95e00.jpg" alt="offer">
+                <div class="col">
+                    <a type="submit" class="btn btn-danger mt-3" style="margin-left: 180px;" routerLink="/newarraival">view</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card">
+        <img src="../../assets/IMG_20230412_130108.jpg" style="height: 200px; width: 600px; margin-left: 130px;"
+            alt="Special Offer">
+        <div class="row">
+            <div class="col">
+                <img class="mt-4" src="../../assets/1474954265.jpg" style="padding: 0px;" alt="offer">
+                <div class="col">
+                    <a type="submit" class="btn btn-danger mt-3" style="margin-left: 180px;" routerLink="/spoffer">view</a>
+                </div>
+            </div>
+            <div class="col">
+                <img class="mt-4"
+                    src="../../assets/big-fashion-sale-poster-banner-flyer-extra-discount-off-background-illustration-young-74920703.jpg"
+                    alt="offer">
+                <div class="col">
+                    <a type="submit" class="btn btn-danger mt-3" style="margin-left: 180px;" routerLink="/spoffer">view</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

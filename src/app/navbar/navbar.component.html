@@ -1,0 +1,78 @@
+<nav class="navbar navbar-expand-lg bg-danger sticky-top">
+  <div class="container-fluid">
+    <img src="../../assets/mb-initial-letter-vector-logo-icon-199677711.jpg" alt="logo" width="35" height="28">
+    <div class="mx-3" style="color: white;">MayaBazar</div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" style="color: white;" routerLink="/homepage">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: white;" routerLink="/clothes">Clothes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: white;" routerLink="/myproduct">My Product</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" [(ngModel)]="searchText" name="searchBox" placeholder="Search.."
+          aria-label="Search">
+        <button class="btn btn-outline-light" type="submit" (click)="onSearchClick()">Search</button>
+        <button type="button" class="btn btn-outline-light mx-2" routerLink="/cartpage">Cart</button>
+        <button type="button" class="btn btn-outline-light mx-1" data-bs-toggle="modal"
+          data-bs-target="#adminModal">Admin</button>
+        <button type="button" class="btn btn-outline-light mx-1" routerLink="">Logout</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<!-- 
+<nav class="navbar navbar-dark bg-danger sticky-top">
+    <div class="container-fluid ">
+        <img src="../../assets/mb-initial-letter-vector-logo-icon-199677711.jpg" alt="logo" width="35" height="28">
+        <div class="mx-3" style="color: white;"> MayaBazar </div>
+        <a style="color: white;" class="nav-link active" aria-current="page" routerLink="/homepage">Home</a>
+        <a style="color: white;" class="nav-link active mx-3" aria-current="page"
+            routerLink="/clothes">Clothes</a>
+        <a style="color: white;" class="nav-link active" aria-current="page"
+            routerLink="/myproduct">MyProducts</a>
+        <form [formGroup]="searchForm" class="d-flex" role="search" style="margin-left: 300px;">
+            <input class="form-control me-3" type="search" formControlName="searchname" [(ngModel)]="searchText"
+                placeholder="Search.." aria-label="Search">
+            <button class="btn btn-outline-light" type="submit" (click)="onSearchClick()">Search</button>
+        </form>
+        <button type="button" class="btn btn-outline-light mx-2" routerLink="/cartpage">Cart</button>
+        <button type="button" class="btn btn-outline-light mx-2" data-bs-toggle="modal"
+            data-bs-target="#adminModal">Admin</button>
+        <button type="button" class="btn btn-outline-light" routerLink="">Logout</button>
+    </div>
+</nav> -->
+
+
+<div class="modal fade" id="adminModal" tabindex="-1" aria-labelledby="adminModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Admin LogIn</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group mb-2">
+            <label for="email">Mail id:</label>
+            <input type="email" name="email" id="email" class="form-control" [(ngModel)]="email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" class="form-control" [(ngModel)]="password" required>
+          </div>
+        </form>
+        <button type="submit" class="btn btn-danger mt-3 d-grid col-6 mx-auto" (click)="onSubmit()">Login</button>
+      </div>
+    </div>
+  </div>
+</div>

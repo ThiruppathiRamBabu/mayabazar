@@ -1,0 +1,186 @@
+<app-navbar [searchText]="searchText" (searchClick)="onSearchClick($event)"></app-navbar>
+<img src="../../assets/image (1).png" alt="bar clothes">
+<div class="card" *ngFor="let item of items">
+  <div class="row">
+    <img [src]="item.clothurl" style="height: 250px; width: 250px; object-fit: contain; border: 10px solid white;"
+    class="mx-5">
+    <div class="col">
+      <h1>{{item.model}}</h1>
+      <p>{{item.description}}</p>
+      <p>Price : {{item.price | currency: 'INR'}}</p>
+      <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#buynowModal" (click)="buyNow(item)">Buy now</a>
+      <a class="btn btn-danger mx-4" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addcart(item)">Add
+        to cart</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" style="color: brown;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> your product has been added to the cart</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Billing Form -->
+<div class="modal fade" id="buynowModal" tabindex="-1" aria-labelledby="buynowModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> Billing Form</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="buyForm" class="row g-3">
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input [ngClass]="{'is-invalid':buyForm.controls['address'].invalid && buyForm.controls['address'].touched}"
+              type="text" class="form-control" formControlName="address" id="inputAddress" placeholder="1234 Main St"
+              required>
+            <div class="invalid-feedback">
+              Enter your Address
+            </div>
+          </div>
+          <div class="col-12">
+            <label for="inputAddress2" class="form-label">Address 2</label>
+            <input
+              [ngClass]="{'is-invalid':buyForm.controls['address2'].invalid && buyForm.controls['address2'].touched}"
+              type="text" class="form-control" id="inputAddress2" formControlName="address2"
+              placeholder="Apartment, studio, or floor" required>
+            <div class="invalid-feedback">
+              Enter your Address 2
+            </div>
+          </div>
+          <div class="col-md-5">
+            <label for="inputCity" class="form-label">City</label>
+            <input [ngClass]="{'is-invalid':buyForm.controls['city'].invalid && buyForm.controls['city'].touched}"
+              type="text" class="form-control" formControlName="city" id="inputCity" required>
+            <div class="invalid-feedback">
+              Enter your City Name
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="inputState" class="form-label">State</label>
+            <input [ngClass]="{'is-invalid':buyForm.controls['state'].invalid && buyForm.controls['state'].touched}"
+              id="text" class="form-control" formControlName="state" id="inputState" required>
+            <div class="invalid-feedback">
+              Enter your State Name
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input [ngClass]="{'is-invalid':buyForm.controls['zip'].invalid && buyForm.controls['zip'].touched}"
+              type="text" class="form-control" formControlName="zip" id="inputZip" required>
+            <div class="invalid-feedback">
+              Enter your Zipcode
+            </div>
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Contact No</label>
+            <input [ngClass]="{'is-invalid':buyForm.controls['contact'].invalid && buyForm.controls['contact'].touched}"
+              type="text" class="form-control" formControlName="contact" id="inputAddress" required>
+            <div class="invalid-feedback">
+              Enter your Contact No
+            </div>
+          </div>
+          <div class="col-12">
+            <label for="inputAddress2" class="form-label">Alternate Contact No</label>
+            <input
+              [ngClass]="{'is-invalid':buyForm.controls['altercontact'].invalid && buyForm.controls['altercontact'].touched}"
+              type="text" class="form-control" formControlName="altercontact" id="inputAddress2" required>
+            <div class="invalid-feedback">
+              Enter your Alternate No
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                Check me out
+              </label>
+            </div>
+          </div>
+          <div>
+            <button style="float: right;" type="submit" class="btn btn-danger d-grid col-3 mx-auto"
+              data-bs-toggle="modal" data-bs-target="#paymentModal" [disabled]="buyForm.invalid"
+              (click)="BillingAddress()">
+              Done</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Payment Term -->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> Payment Term</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="payForm" class="row g-3">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-danger btn-outline-light">Credit</button>
+            <button type="button" class="btn btn-danger btn-outline-light">debit</button>
+            <button type="button" class="btn btn-danger btn-outline-light">netbanking</button>
+          </div>
+          <div class="col-12">
+            <label for="holderName" class="form-label">Card Holder Name</label>
+            <input
+              [ngClass]="{'is-invalid':payForm.controls['holdername'].invalid && payForm.controls['holdername'].touched}"
+              type="text" class="form-control" formControlName="holdername" id="holderName" required>
+            <div class="invalid-feedback">
+              Enter the card holder name
+            </div>
+          </div>
+          <div class="col-12">
+            <label for="cardNumber" class="form-label">Card Number</label>
+            <input
+              [ngClass]="{'is-invalid':payForm.controls['cardnumber'].invalid && payForm.controls['cardnumber'].touched}"
+              type="text" class="form-control" formControlName="cardnumber" id="cardNumber" required>
+            <div class="invalid-feedback">
+              Enter the card number
+            </div>
+          </div>
+          <div class="col-md-5">
+            <label for="expiryDate" class="form-label">Expiry Date</label>
+            <input
+              [ngClass]="{'is-invalid':payForm.controls['expirydate'].invalid && payForm.controls['expirydate'].touched}"
+              type="text" class="form-control" formControlName="expirydate" id="expiryDate" placeholder="MM/YY"
+              required>
+            <div class="invalid-feedback">
+              Enter the card expiry date
+            </div>
+          </div>
+          <div class="col-md-5">
+            <label for="ccvNumber" class="form-label">CVV</label>
+            <input
+              [ngClass]="{'is-invalid':payForm.controls['cvvnumber'].invalid && payForm.controls['cvvnumber'].touched}"
+              id="text" class="form-control" formControlName="cvvnumber" id="ccvNumber" required>
+            <div class="invalid-feedback">
+              Enter the cvv number
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                Check me out
+              </label>
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-danger d-grid col-6 mx-auto" [disabled]="payForm.invalid"
+              (click)="payment()">Make Payment</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

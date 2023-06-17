@@ -1,0 +1,136 @@
+<app-navbar></app-navbar>
+<img src="../../assets/image (1).png" alt="bar clothes">
+<div *ngIf="cartData.length !==0; else elseBlock ">
+  <div class="card" *ngFor="let cart of cartData; let i=index; ">
+    <div class="row">
+      <img [src]="cart.clothurl" style="height: 250px; width: 250px; object-fit: contain; border: 10px solid white;"
+        class="mx-5">
+      <div class="col">
+        <h1>{{cart.model}}</h1>
+        <p>{{cart.description}}</p>
+        <!-- <p>Price : {{cart.price | currency: 'INR'}}</p> -->
+        <p>Total : {{totalPrice | currency: 'INR'}}</p>
+        <div>
+        <label for="qty" class="mx-2">Qty :</label>
+        <select [(ngModel)]="qty" type="text" class="mb-4" (change)="quantity()" id="qty" style="width: 40px; height: 20px;">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <a class="btn btn-danger" (click)="removeItem(i)">Remove</a>
+        <a class="btn btn-danger mx-4" data-bs-toggle="modal" data-bs-target="#buynowModal" (click)="buyNow(cart)">Buy
+          now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  <h1 class="text-center mt-4">No Items available in Cart..!</h1>
+</ng-template>
+
+<div class="modal fade" id="buynowModal" tabindex="-1" aria-labelledby="buynowModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> Billing Form</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div style="padding: 10px;">
+        <form class="row g-3">
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress2" class="form-label">Address 2</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+          </div>
+          <div class="col-md-5">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" id="inputCity">
+          </div>
+          <div class="col-md-4">
+            <label for="inputState" class="form-label">State</label>
+            <input id="text" class="form-control" id="inputState">
+          </div>
+          <div class="col-md-3">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Contact No</label>
+            <input type="text" class="form-control" id="inputAddress">
+          </div>
+          <div class="col-12">
+            <label for="inputAddress2" class="form-label">Alternate Contact No</label>
+            <input type="text" class="form-control" id="inputAddress2">
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                Check me out
+              </label>
+            </div>
+          </div>
+          <div>
+            <button style="float: right;" type="submit" class="btn btn-danger d-grid col-3 mx-auto"
+              data-bs-toggle="modal" data-bs-target="#paymentModal">
+              Done</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> Payment Term</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div style="padding: 10px;">
+        <form class="row g-3">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-danger btn-outline-light">Credit</button>
+            <button type="button" class="btn btn-danger btn-outline-light">debit</button>
+            <button type="button" class="btn btn-danger btn-outline-light">netbanking</button>
+          </div>
+          <div class="col-12">
+            <label for="holderName" class="form-label">Card Holder Name</label>
+            <input type="text" class="form-control" id="holderName">
+          </div>
+          <div class="col-12">
+            <label for="cardNumber" class="form-label">Card Number</label>
+            <input type="text" class="form-control" id="cardNumber">
+          </div>
+          <div class="col-md-5">
+            <label for="expirayDate" class="form-label">Expiray Date</label>
+            <input type="text" class="form-control" id="expirayDate" placeholder="MM/YY">
+          </div>
+          <div class="col-md-5">
+            <label for="ccvNumber" class="form-label">CCV</label>
+            <input id="text" class="form-control" id="ccvNumber">
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                Check me out
+              </label>
+            </div>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-danger d-grid col-6 mx-auto" (click)="payment()">Make Payment</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

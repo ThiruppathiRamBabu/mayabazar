@@ -1,0 +1,154 @@
+<nav class="navbar navbar-expand-lg bg-danger sticky-top">
+    <div class="container-fluid">
+        <img src="../../assets/mb-initial-letter-vector-logo-icon-199677711.jpg" alt="logo" width="35" height="28">
+      <div class="mx-3 me-2" style="color: white;">MayaBazar</div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" style="color: white;" routerLink="/homepage">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: white;" routerLink="/clothes">Clothes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="color: white;" routerLink="/myproduct">My Product</a>
+          </li>
+           </ul>
+        <form [formGroup]="searchForm"  class="d-flex" role="search">
+          <input class="form-control me-2" type="search"
+          placeholder="Search.." aria-label="Search" formControlName="searchName" >
+          <button class="btn btn-outline-light" type="submit"  (click)="onSearchClick()">Search</button>
+          <button type="button" class="btn btn-outline-light mx-2" routerLink="/cartpage">Cart</button>
+          <button type="button" class="btn btn-outline-light mx-2" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">Add</button>
+      <button type="button" class="btn btn-outline-light" routerLink="">Logout</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+<img src="../../assets/image (1).png" alt="bar clothes">
+
+<div class="card" *ngFor="let product of filterItems let i=index;">
+    <div class="row">
+        <img [src]="product.clothurl" style="height: 250px; width: 250px; object-fit: contain; border: 10px solid white;" class="mx-5">
+        <div class="col">
+            <h1>{{product.model}}</h1>
+            <p>{{product.description}}
+            </p>
+            <p>Price : {{product.price | currency: 'INR'}}</p>
+            <a class="btn btn-danger" (click)="removeItem(product.id)" data-bs-toggle="modal" data-bs-target="#removeModal">Remove Item</a>
+            <a class="btn btn-danger mx-3" data-bs-toggle="modal" data-bs-target="#updateModal" (click)="editForm(product)">Edit</a>
+        </div>
+    </div>
+</div>
+
+<!-- Additem Model -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Adding Form</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form [formGroup]="myForm">
+                <div style="padding: 10px;">
+                    <div class="col-12">
+                        <label for="clothtype" class="form-label">Type</label>
+                        <select class="form-control" formControlName="type" id="clothtype">
+                            <option>Shirt</option>
+                            <option>Pant</option>
+                            <option>T-shirt</option>
+                            <option>Saree</option>
+                            <option>Chudi</option>
+                            <option>Tops</option>
+                        </select>
+                    </div>
+                    <div class="col-12">      
+                      <label for="model" class="form-label mt-3">Model</label>
+                        <input type="text" class="form-control" formControlName="model" id="model">
+                    </div>
+                    <div class="col-12">
+                        <label for="clothprice" class="form-label mt-3">Cloth Price</label>
+                        <input type="text" class="form-control" formControlName="price" id="clothprice">
+                    </div>
+                    <div class="col-12">
+                        <label for="description" class="form-label mt-3"> Description</label>
+                        <input type="text" class="form-control" formControlName="description" id="description">
+                    </div>
+                    <div class="col-12">
+                        <label for="clothurl" class="form-label mt-3">Cloth Url</label>
+                        <input type="text" class="form-control" formControlName="clothurl" id="clothurl">
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-danger d-grid col-4 mx-auto mt-4" (click)="add()">Add
+                            Item</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Remove Model -->
+<div class="modal fade" style="color: brown;" id="removeModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"> Product has been Removed</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Update Model -->
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Adding Form</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form [formGroup]="updateForm">
+              <div style="padding: 10px;">
+                <div class="col-12">      
+                  <label for="id" class="form-label mt-3">Id</label>
+                    <input type="text" class="form-control" formControlName="id" id="id">
+                </div>
+                  <div class="col-12">
+                      <label for="clothtype" class="form-label">Type</label>
+                      <select class="form-control" formControlName="type" id="clothtype">
+                          <option>Shirt</option>
+                          <option>Pant</option>
+                          <option>Tshirt</option>
+                          <option>Saree</option>
+                          <option>Chudi</option>
+                          <option>Tops</option>
+                      </select>
+                  </div>
+                  <div class="col-12">      
+                    <label for="model" class="form-label mt-3">Model</label>
+                      <input type="text" class="form-control" formControlName="model" id="model">
+                  </div>
+                  <div class="col-12">
+                      <label for="clothprice" class="form-label mt-3">Cloth Price</label>
+                      <input type="text" class="form-control" formControlName="price" id="clothprice">
+                  </div>
+                  <div class="col-12">
+                      <label for="description" class="form-label mt-3"> Description</label>
+                      <input type="text" class="form-control" formControlName="description" id="description">
+                  </div>
+                  <div class="col-12">
+                      <label for="clothurl" class="form-label mt-3">Cloth Url</label>
+                      <input type="text" class="form-control" formControlName="clothurl" id="clothurl">
+                  </div>
+                  <div>
+                      <button type="submit" class="btn btn-danger d-grid col-4 mx-auto mt-4" (click)="updateItem()" >Upadate</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
