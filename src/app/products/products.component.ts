@@ -99,6 +99,7 @@ export class ProductsComponent {
     else {
     }
   }
+  
   payment() {
     $('#paymentModal').modal('hide')
     const item: any = localStorage.getItem('Buy')

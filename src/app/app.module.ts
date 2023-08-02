@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,7 @@ import { NewarraivalComponent } from './newarraival/newarraival.component';
 import { SpofferComponent } from './spoffer/spoffer.component';
 import { MyproductComponent } from './myproduct/myproduct.component';
 import { HttpClientModule } from '@angular/common/http';
+import {CharThumbModule} from 'char-thumbnail';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CharThumbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
